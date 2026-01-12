@@ -4,7 +4,7 @@
 
 E-commerce companies invest heavily in driving traffic to their websites, but what really matters in terms of generating revenue is conversion: turning browsers into buyers. This analysis looks at 12,330 online shopping sessions to understand what separates visitors who purchase from those who leave empty-handed.
 
-The dataset captures user behavior across an e-commerce platform, tracking page visits, time spent browsing, bounce rates, and whether each session ended in a purchase. By identifying patterns in how buyers behave differently from non-buyers, the business can focus its optimization efforts where they'll have the most impact.
+The dataset captures user behavior across an e-commerce platform, tracking page visits, time spent browsing, bounce rates, and whether each session ended in a purchase. By identifying patterns in how buyers behave differently from non-buyers, the business can focus its optimization efforts where they'll have the most impact. Beyond identifying patterns, the project builds a predictive model to score sessions by purchase likelihood.
 
 *This project was conducted in October 2025 and later uploaded to GitHub in January 2026.*
 
@@ -13,6 +13,7 @@ The dataset captures user behavior across an e-commerce platform, tracking page 
 - Which months and traffic sources drive highest-converting sessions?
 - How does browsing behavior (pages viewed, time on site, bounce rate) relate to likelihood of purchase?
 - Are there specific visitor profiles that warrant targeted attention?
+- Can we predict which sessions are likely to convert based on browsing behavior?
 
 **Dataset Information**
 
@@ -21,6 +22,8 @@ The dataset captures user behavior across an e-commerce platform, tracking page 
 **Provider:** UCI Machine Learning Repository
 
 SQL queries for inspection and analysis: [Inspection Queries](sql/01_data_inspection.sql), [Analysis Queries](sql/02_analysis_queries.sql)
+
+Python script for predictive modeling: [Predictive Model](predictive_model.py)
 
 ---
 
@@ -225,6 +228,43 @@ Region 1 drives 38% of traffic but converts at the overall average. The 5.6 perc
 
 ---
 
+## Predictive Model
+
+A logistic regression model was built to predict purchase likelihood based on session behavior.
+
+### Model Performance
+
+| Metric | Score |
+|--------|-------|
+| Accuracy | 95.9% |
+| Precision | 82.9% |
+| Recall | 94.6% |
+| F1 Score | 88.3% |
+| ROC AUC | 0.992 |
+
+### Feature Importance
+
+The model confirms the SQL analysis findings:
+
+| Feature | Impact | Coefficient |
+|---------|--------|-------------|
+| ProductRelated | Positive | +3.82 |
+| BounceRates | Negative | -2.34 |
+| ExitRates | Negative | -1.87 |
+| ProductRelated_Duration | Positive | +0.34 |
+
+Engagement metrics (pages viewed, time on site) are stronger predictors than demographic factors (region, browser, OS).
+
+![Predictive Model](visualizations/06_predictive_model.png)
+
+### Business Application
+
+- Use model scores to identify high-intent visitors for targeted offers
+- Focus UX improvements on reducing bounce/exit rates
+- Prioritize features that increase page engagement
+
+---
+
 ## Recommendations
 
 ### 1. Prioritize Bounce Rate Reduction
@@ -282,17 +322,30 @@ The analysis was conducted using MySQL with the following query categories:
 | Percentage Calculations | Share of traffic, conversion rates | `100.0 * SUM(...) / COUNT(*)` |
 | Filtering | Visitor type, month analysis | `WHERE VisitorType IN (...)` |
 
+### Predictive Model
+
+Built with Python (scikit-learn):
+
+| Component | Details |
+|-----------|---------|
+| Algorithm | Logistic Regression |
+| Features | 16 behavioral and categorical variables |
+| Train/Test Split | 80/20 with stratification |
+| Class Balancing | Balanced class weights |
+
 ### Repository Structure
 
 ```
-├── README.md
+├── README.md             
+├── predictive_model.py
 ├── sql/
 │   ├── 01_data_inspection.sql
 │   └── 02_analysis_queries.sql
 └── visualizations/
     ├── 03_executive_dashboard.png
     ├── 04_conversion_analysis.png
-    └── 05_segment_analysis.png
+    ├── 05_segment_analysis.png
+    └── 06_predictive_model.png
 ```
 
 ---
