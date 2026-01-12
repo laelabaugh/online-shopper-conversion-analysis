@@ -6,7 +6,9 @@ E-commerce companies invest heavily in driving traffic to their websites, but wh
 
 The dataset captures user behavior across an e-commerce platform, tracking page visits, time spent browsing, bounce rates, and whether each session ended in a purchase. By identifying patterns in how buyers behave differently from non-buyers, the business can focus its optimization efforts where they'll have the most impact.
 
-**Key Questions:**
+*This project was conducted in October 2025 and later uploaded to GitHub in January 2026.*
+
+**Key business questions addressed:**
 - What is the overall conversion rate, and how does it vary by visitor segment?
 - Which months and traffic sources drive highest-converting sessions?
 - How does browsing behavior (pages viewed, time on site, bounce rate) relate to likelihood of purchase?
@@ -266,15 +268,13 @@ New visitors convert nearly as well as returning visitors, but this gap should b
 
 ```
 ├── README.md
-├── data/
-│   └── 01_online_shoppers_intention.csv
 ├── sql/
-│   ├── 02_data_inspection.sql
-│   └── 03_analysis_queries.sql
-├── visualizations/
-    ├── 04_executive_dashboard.png
-    ├── 05_conversion_analysis.png
-    └── 06_segment_analysis.png
+│   ├── 01_data_inspection.sql
+│   └── 02_analysis_queries.sql
+└── visualizations/
+    ├── 03_executive_dashboard.png
+    ├── 04_conversion_analysis.png
+    └── 05_segment_analysis.png
 ```
 
 ---
