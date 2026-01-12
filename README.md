@@ -1,4 +1,4 @@
-# Online Shoppers Purchase Intention & Behavior Analysis
+# Online Shoppers Purchase Behavior Analysis
 
 ## Project Background
 
