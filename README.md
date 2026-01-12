@@ -115,6 +115,8 @@ Returning visitors make up 85% of traffic and convert slightly better than new v
 | Best Converting Month | May (18.7%) |
 | Worst Converting Month | July (15.0%) |
 
+![Executive Dashboard](visualizations/03_executive_dashboard.png)
+
 ---
 
 ## Insights Deep Dive
@@ -149,6 +151,8 @@ Visitors who view more product pages are far more likely to buy. Those viewing 5
 Buyers view an average of 44 product pages versus 28 for non-buyers. They also spend nearly twice as long browsing (1,912 seconds vs 991 seconds).
 
 **Suggestion:** Features that encourage deeper browsing, such as related product recommendations, comparison tools or wish lists, could push moderate browsers into higher-converting segments.
+
+![Conversion Analysis](visualizations/04_conversion_analysis.png)
 
 ---
 
@@ -217,6 +221,8 @@ Region 1 drives 38% of traffic but converts at the overall average. The 5.6 perc
 
 **Suggestion:** Investigate what's working in Region 7. If the high conversion reflects audience quality, consider increasing marketing spend there. If it's a site experience difference, apply those lessons elsewhere.
 
+![Segment Analysis](visualizations/05_segment_analysis.png)
+
 ---
 
 ## Recommendations
@@ -262,7 +268,19 @@ New visitors convert nearly as well as returning visitors, but this gap should b
 
 ---
 
-## Technical Details
+## Technical Implementation
+
+### SQL Queries Reference
+
+The analysis was conducted using MySQL with the following query categories:
+
+| Query Type | Purpose | Example |
+|------------|---------|---------|
+| Aggregation | Conversion rates, averages | `AVG()`, `COUNT()`, `GROUP BY` |
+| Conditional Logic | Segment categorization | `CASE WHEN BounceRates < 0.02 THEN...` |
+| Subqueries | Baseline comparisons | `(SELECT COUNT(*) FROM sessions)` |
+| Percentage Calculations | Share of traffic, conversion rates | `100.0 * SUM(...) / COUNT(*)` |
+| Filtering | Visitor type, month analysis | `WHERE VisitorType IN (...)` |
 
 ### Repository Structure
 
