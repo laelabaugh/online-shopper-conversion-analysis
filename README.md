@@ -308,6 +308,15 @@ New visitors convert nearly as well as returning visitors, but this gap should b
 
 ---
 
+## Limitations
+
+- Data covers a single time period; seasonal patterns would benefit from multi-year comparison.
+- Traffic source and region identifiers are anonymous, limiting actionable specificity.
+- No revenue amounts, only purchase yes/no, so high-value customer analysis isn't possible.
+- Browser and OS identifiers don't map to names, limiting device optimization insights.
+  
+---
+
 ## Technical Implementation
 
 ### SQL Queries Reference
@@ -348,12 +357,3 @@ Built with Python (scikit-learn):
     └── 06_predictive_model.png
 ```
 
----
-
-## Limitations
-
-- Data covers a single time period; seasonal patterns would benefit from multi-year comparison.
-- Traffic source and region identifiers are anonymous, limiting actionable specificity.
-- No revenue amounts, only purchase yes/no, so high-value customer analysis isn't possible.
-- Browser and OS identifiers don't map to names, limiting device optimization insights.
-___
